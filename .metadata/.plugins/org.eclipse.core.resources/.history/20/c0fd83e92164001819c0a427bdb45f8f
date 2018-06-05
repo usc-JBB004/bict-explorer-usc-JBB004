@@ -1,0 +1,99 @@
+package au.edu.usc.bict_explorer.rules;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class CourseTest {
+
+	private String code;
+	private String name;
+	private String desc;
+	private String semesters="";
+	private PreReqs pre=new PreReqs("");
+	private Option[] downstream;
+	
+	Course course =new Course(code,name,desc,semesters,pre,downstream);
+	
+	private Map<String, Option> courses;
+	  PreReqs pre1 = new PreReqs("ICT112");
+	  PreReqs pre2 = new PreReqs("");
+	
+	@BeforeEach
+    void setup() {
+        
+	    courses = new HashMap<>();
+        courses.put("ICT112", new Option("ICT112", "Python", "Learn Python"));
+        courses.put("ICT115", new Option("ICT115", "Design", "System Design"));
+  
+    }
+	
+	@Test
+	void testIsOfferedSem1() {
+		 assertTrue(course.isOffered(1));
+		
+	}
+
+	@Test
+	void testIsOfferedSem4() {
+		 assertFalse(course.isOffered(4));
+	}
+	
+	@Test
+	void testIsOfferedSem3() {
+		 assertTrue(course.isOffered(3));
+	}
+	
+	  @Test
+	    void testEmpty() {
+	        PreReqs pre = new PreReqs("");
+	        assertTrue(pre.isSatisfied(courses));
+	    }
+
+	    @Test
+	    void testSingleMissing() {
+	        PreReqs pre = new PreReqs("ICT113");
+	        assertFalse(pre.isSatisfied(courses));
+	    }
+
+	    @Test
+	    void testSingleDone() {
+	        PreReqs pre = new PreReqs("ICT112");
+	        assertTrue(pre.isSatisfied(courses));
+	    }
+
+	    @Test
+	    void testTwoDone() {
+	        PreReqs pre = new PreReqs("ICT112,ICT115");
+	        assertTrue(pre.isSatisfied(courses));
+	    }
+
+	    @Test
+	    void testTwoFirst() {
+	        PreReqs pre = new PreReqs("ICT112,ICT116");
+	        assertFalse(pre.isSatisfied(courses));
+	    }
+
+	    @Test
+	    void testTwoSecond() {
+	        PreReqs pre = new PreReqs("ICT111,ICT112");
+	        assertFalse(pre.isSatisfied(courses));
+	    }
+
+	@Test
+	void testGetPreReqs() {
+		  assertEquals(pre1, course.getPreReqs());
+		  assertEquals(pre2, course.getPreReqs());
+	}
+
+	@Test
+	void testGetSemesters() {
+		assertEquals("", course.getSemesters());
+		  assertEquals("3", course.getSemesters());
+	}
+
+}

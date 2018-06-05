@@ -1,0 +1,5 @@
+button.setStyle(
+         "-fx-background-color: darkslateblue; -fx-textfill: white;"); 
+       
+      label.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      gridPane.setStyle("-fx-background-color: BEIGE;");

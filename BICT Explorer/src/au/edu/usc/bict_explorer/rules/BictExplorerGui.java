@@ -1,0 +1,278 @@
+package au.edu.usc.bict_explorer.rules;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+		 
+public class BictExplorerGui extends Application{
+		 
+	public static void main(String[] args) {
+		
+		launch(args);
+	}
+	
+	 	@Override
+		public void start(Stage primaryStage) throws Exception {
+			File careersFile= new File("src/au/edu/usc/bict_explorer/resources/careers.options");
+			File minorsFile= new File("src/au/edu/usc/bict_explorer/resources/minors.options");
+			File coursesFile= new File("src/au/edu/usc/bict_explorer/resources/courses.options");
+			Degree degree=null;
+			ArrayList<Hierarchy> hierarchy=new ArrayList<>();
+			Map<String, Option> result1;
+			Map<String, Option> result2;
+			Map<String, Option> result3;
+			try
+			{
+			degree = new Degree(careersFile,minorsFile,coursesFile);
+			}
+			catch(IOException|ParseException e)
+			{
+				e.printStackTrace();
+			}
+			result1= degree.courses();
+			result2= degree.minors();
+			result3= degree.careers();
+			Set<Entry<String, Option>> set1=result1.entrySet();
+			Set<Entry<String, Option>> set2=result2.entrySet();
+			Set<Entry<String, Option>> set3=result3.entrySet();
+			
+			primaryStage.setTitle("BICT Explorer");
+			primaryStage.show();
+			Label careersLabel= new Label("Which ICT Career would you like?");
+			Label minorsLabel= new Label("Recommended BICT minor");
+			Label coursesLabel= new Label("Which Course would you like?");
+			
+		      GridPane gridPane = new GridPane();
+		      gridPane.setMinSize(500, 500);
+		      gridPane.setPadding(new Insets(10, 10, 10, 10));
+		      gridPane.setVgap(5); 
+		      gridPane.setHgap(5);
+		      gridPane.add(careersLabel, 1, 0);
+		      gridPane.add(minorsLabel, 6, 0);
+		      gridPane.add(coursesLabel, 40, 0);
+		      
+		      CheckBox javaCheckBox;
+			  CheckBox javaCheckBox1;
+		     CheckBox javaCheckBox2;
+						int careerRow=1;
+						 int minorRow=1;
+						 int courseRow=1;
+	for(Entry<String, Option> entry2:set3)
+	 {	
+				
+				javaCheckBox = new CheckBox(entry2.getValue().getName()); 
+				Hierarchy level1=new Hierarchy(javaCheckBox);
+				hierarchy.add(level1);
+			    gridPane.add(javaCheckBox, 1, careerRow);
+			    
+	    for(Option o1:entry2.getValue().getDownstream())
+		 {
+			for(Entry<String, Option> entry:set2)
+			{
+				String s1=o1.toString();
+				if(s1.equals((entry.getValue().getCode())))
+				{
+					javaCheckBox1 = new CheckBox(entry.getValue().getName()); 
+					Hierarchy level2=new Hierarchy(javaCheckBox1);
+					level1.getChild().add(level2);
+				    gridPane.add(javaCheckBox1, 6, minorRow);
+				    
+				 for(Option o:entry.getValue().getDownstream())
+				{
+					for(Entry<String, Option> entry1:set1)
+					{
+						String s=o.toString();
+						if(s.equals((entry1.getValue().getCode())))
+						{
+							
+					        javaCheckBox2 = new CheckBox(entry1.getValue().getName()); 
+							Hierarchy level3=new Hierarchy(javaCheckBox2);
+							level2.getChild().add(level3);
+						      javaCheckBox2.setIndeterminate(false);
+						     gridPane.add(javaCheckBox2, 40, courseRow);
+						    courseRow++;
+					   
+						}
+					}
+			    }
+					
+				    courseRow=courseRow+5;
+			     	minorRow=minorRow+9;
+				
+			}
+		}
+  }
+			       careerRow=careerRow+18;
+		 }
+			    
+			    Button buttonReport = new Button("Report");
+			    buttonReport.setOnAction(e -> 
+			{
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				int count=0,count1=0,count2=0;
+				int flag=0,flag1=0,flag2=0;
+				for (Hierarchy root : hierarchy) 
+				{
+					if(root.getCheckBox().isSelected())
+					{
+						for (Hierarchy child1 : root.getChild()) 
+						{
+							if(child1.getCheckBox().isSelected())
+							{ 
+				                 for (Hierarchy child2 : child1.getChild()) {
+				                	
+							 		if(child2.getCheckBox().isSelected()) {
+							 			count2++;
+							 		}
+							 		else
+							 		{
+							 			alert.setTitle("Error");
+							 			alert.setContentText("Select Career followed by Minor followed by Courses");
+							 			alert.show();
+							 			
+							 		}
+							 		
+								}			                 
+				                 count1++;
+				            }
+							else
+							{
+								alert.setTitle("Error");
+								alert.setContentText("Select Career followed by Minor followed by Courses");
+								alert.show();
+							}
+						
+						}
+						count++;
+					}
+					else
+					{
+						alert.setTitle("Error");
+						alert.setContentText("Select Career followed by Minor followed by Courses");
+						alert.show();
+					}
+					
+				}
+				/* if(flag<count && flag1<count1 && flag2<count2)
+				  {
+				try {
+					alert.close();
+					primaryStage.hide();
+					ReportGui report=new ReportGui(hierarchy);
+					Stage stage=new Stage();
+					report.start(stage);
+				    } 
+				catch (Exception e1)
+				    {
+				       e1.printStackTrace();
+				   }
+			  	}*/
+				 if((count==1 && count1==1  &&count2>=1)||(count==1 && count1==2  &&count2>=2))
+				  {
+				try {
+					alert.close();
+					primaryStage.hide();
+					ReportGui report=new ReportGui(hierarchy);
+					Stage stage=new Stage();
+					report.start(stage);
+				    } 
+				catch (Exception e1)
+				    {
+				       e1.printStackTrace();
+				   }
+			  	}
+				 else if((count==2 && count1>=2 && count2>=2))
+				  {
+				try {
+					alert.close();
+					primaryStage.hide();
+					ReportGui report=new ReportGui(hierarchy);
+					Stage stage=new Stage();
+					report.start(stage);
+				    } 
+				catch (Exception e1)
+				    {
+				       e1.printStackTrace();
+				   }
+			  	}
+				 else if((count==3 && count1>=3 && count2>=3))
+				  {
+				try {
+					alert.close();
+					primaryStage.hide();
+					ReportGui report=new ReportGui(hierarchy);
+					Stage stage=new Stage();
+					report.start(stage);
+				    } 
+				catch (Exception e1)
+				    {
+				       e1.printStackTrace();
+				   }
+			  	}
+				 else if((count==4 && count1>=4 && count2>=4))
+				  {
+				try {
+					alert.close();
+					primaryStage.hide();
+					ReportGui report=new ReportGui(hierarchy);
+					Stage stage=new Stage();
+					report.start(stage);
+				    } 
+				catch (Exception e1)
+				    {
+				       e1.printStackTrace();
+				   }
+			  	}
+				 else if((count>4 && count1>4 && count2>4))
+				  {
+				try {
+					alert.close();
+					primaryStage.hide();
+					ReportGui report=new ReportGui(hierarchy);
+					Stage stage=new Stage();
+					report.start(stage);
+				    } 
+				catch (Exception e1)
+				    {
+				       e1.printStackTrace();
+				   }
+			  	} 
+				
+	          }
+			);
+			
+			 gridPane.add(buttonReport, 50, 20);
+			 ScrollPane scrollPane = new ScrollPane();
+			 scrollPane.setContent(gridPane);
+			 scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+			 scrollPane.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
+			 Scene scene = new Scene(scrollPane, 1100, 550);
+			 scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+			 primaryStage.setScene(scene);
+	}
+	 
+}
+
+
+
+
+
+
+

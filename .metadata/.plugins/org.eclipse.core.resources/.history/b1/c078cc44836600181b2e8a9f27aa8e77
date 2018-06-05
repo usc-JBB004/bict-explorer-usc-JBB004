@@ -1,0 +1,12 @@
+buttonRegister.setStyle(
+         "-fx-background-color: darkslateblue; -fx-textfill: white;"); 
+       
+      nameLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      dobLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      genderLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      reservationLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      technologiesLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      educationLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+      locationLabel.setStyle("-fx-font: normal bold 15px 'serif' "); 
+    
+      gridPane.setStyle("-fx-background-color: BEIGE;");

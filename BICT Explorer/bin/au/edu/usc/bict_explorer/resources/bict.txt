@@ -1,0 +1,48 @@
+BICT 	BICT core	 These core courses are required, plus either ICT341 or ICT342	 [BUS101, BUS104, BUS106, COR109, ICT110, ICT112, ICT115, ICT120, ICT351, ICT352]	 []
+____________________________________________________________________________________________________________________________
+BUS101 	Business Analytics	 Introduction to Business Analytics and Statistics.	 [] 	[BICT]
+BUS104 	Introduction to Management	 First management course.	 [] 	[BICT]
+BUS106 	Accounting for Business	 Basic accounting knowledge for business undergraduates.	 [] 	[BICT]
+COR109 	Communication and Thought	 Communication for academic and professional settings.	 [] 	[BICT]
+ICT110 	Introduction to Data Science	 This class is an introduction to the practice of data science.	 [] 	[BICT, DM]
+ICT112 	Creative Problem Solving with Programming	 This course teaches you to program with Python etc.	 [] 	[BICT, SD, IS]
+ICT115 	Introduction to Systems Design	 This course introduces the software lifecycle and foundation concepts of systems analysis and design.	 [] 	[BICT, IS]
+ICT120 	Introduction to Telecommunication and Networks	 This course introduces you to important concepts focusing on technology and protocols used by most people using the Internet.	 [] 	[BICT, TCN]
+ICT351 	ICT Professional Practice	 This course is structured to assist you in your future role as an Information and Communication Technology professional.	 [] 	[BICT]
+ICT352 	ICT Project Management	 The subject is a practitioners approach to ICT project management and quality assurance.	 [] 	[BICT]
+=============================================================================================================================
+SD 	Software Development	 A software development minor enables you to be a programmer.	 [ICT112, ICT221, ICT310, ICT311]	 [AP, DA]
+____________________________________________________________________________________________________________________________
+ICT112 	Creative Problem Solving with Programming	 This course teaches you to program with Python etc.	 [] 	[BICT, SD, IS]
+ICT221 	Software Development 1	 Object-oriented and GUI programming with Java	 [] 	[SD]
+ICT310 	Systems Analysis and Design	 The course introduces the student to a range of concepts used in the analysis and design of information systems.	 [] 	[SD, IS]
+ICT311 	Mobile App Development	 This course introduces students to important concepts and aspects in mobile application development on Java based Android phones, including UI design, data persistence, multimedia support, sensor management, multithreading, debug and test, and application publishing.	 [] 	[SD]
+=============================================================================================================================
+GP 	Game Programming	 The game programming minor enables you to be a game programmer.	 [SGD102, SGD213, SGD240, SGD300]	 [AP]
+____________________________________________________________________________________________________________________________
+SGD102 	Introduction to Games Scripting	 In this course, you will learn the basics of scripting within industry standard game engines.	 [] 	[GP]
+SGD213 	Professional Games Programming	 In this course, you will apply the programming skills learnt in SGD203 to Unity, and the C# programming language.	 [] 	[GP]
+SGD240 	Advanced Games Programming	 This course builds on the programming knowledge from SGD213 and covers a variety of advanced topics that you could choose to specialise in as a programmer within the games industry.	 [] 	[GP]
+SGD300 	Advanced Games Programming 2.0	 Continuing from SGD240, this course covers advanced topics that you could choose to specialise in as a programmer within the games industry.	 [] 	[GP]
+=============================================================================================================================
+TCN 	Telecoms and Networks	 With this minor you can design and manage computer networks.	 [ICT120, ICT220, ICT301, ICT321]	 [NA]
+____________________________________________________________________________________________________________________________
+ICT120 	Introduction to Telecommunication and Networks	 This course introduces you to important concepts focusing on technology and protocols used by most people using the Internet.	 [] 	[BICT, TCN]
+ICT220 	Telecommunications and Networks	 This course explores the technology that forms the basis of modern and future networks.	 [] 	[TCN]
+ICT301 	Advanced Network Topics, Management and Security	 This course builds on ICT220 Telecommunications & Networks with a more technical approach to network design and specifically management.	 [] 	[TCN]
+ICT321 	Architecture and Systems Integration	 This course will teach you skills in enterprise architecture planning (EAP) and in enterprise application integration (EAI)	 [] 	[TCN, DM]
+=============================================================================================================================
+DM 	Data Management	 The data management minor enables you to work as a database administrator.	 [ICT110, ICT211, ICT320, ICT321]	 [NA, DA, BA]
+____________________________________________________________________________________________________________________________
+ICT110 	Introduction to Data Science	 This class is an introduction to the practice of data science.	 [] 	[BICT, DM]
+ICT211 	Database Design	 This course introduces you to the major concepts, methodologies, tools and techniques that are required to analyse, design, and develop well-structured databases for modern organisations.	 [] 	[DM, IS]
+ICT320 	Database Programming	 This course provides you with advanced database concepts including advanced SQL and NoSQL database systems.	 [] 	[DM]
+ICT321 	Architecture and Systems Integration	 This course will teach you skills in enterprise architecture planning (EAP) and in enterprise application integration (EAI)	 [] 	[TCN, DM]
+=============================================================================================================================
+IS 	Information Systems	 You can work as a systems analyst, solving business problems.	 [ICT112, ICT115, ICT211, ICT310]	 [BA]
+____________________________________________________________________________________________________________________________
+ICT112 	Creative Problem Solving with Programming	 This course teaches you to program with Python etc.	 [] 	[BICT, SD, IS]
+ICT115 	Introduction to Systems Design	 This course introduces the software lifecycle and foundation concepts of systems analysis and design.	 [] 	[BICT, IS]
+ICT211 	Database Design	 This course introduces you to the major concepts, methodologies, tools and techniques that are required to analyse, design, and develop well-structured databases for modern organisations.	 [] 	[DM, IS]
+ICT310 	Systems Analysis and Design	 The course introduces the student to a range of concepts used in the analysis and design of information systems.	 [] 	[SD, IS]
+=============================================================================================================================

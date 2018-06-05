@@ -1,0 +1,76 @@
+ackage au.edu.usc.bict_explorer.rules;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class Dinnermenu extends Application {
+
+static String selecteditems= "";
+@Override
+public void start(Stage primaryStage) {
+
+
+primaryStage.setTitle("Dinner Menu Fish Selection");
+
+Label labelfirst= new Label("Which items would you like?");
+Label labelresponse= new Label();
+        
+VBox layout= new VBox(5);
+
+Button button= new Button("Submit");
+
+CheckBox one, two, three, four;
+
+one= new CheckBox("Salmon");
+two= new CheckBox("Lobster");
+three= new CheckBox("Shrimp");
+four= new CheckBox("Tuna");
+
+
+button.setOnAction(e -> 
+{
+  
+if (one.isSelected())
+{
+selecteditems += "Salmon\n";
+}
+   
+if (two.isSelected())
+{
+selecteditems += "Lobster\n";
+}
+    
+if (three.isSelected())
+{
+selecteditems += "Shrimp\n";
+}
+     
+if (four.isSelected())
+{
+selecteditems += "Tuna\n";
+}    
+     
+labelresponse.setText("You selected\n" + selecteditems);
+}
+);
+
+
+layout.getChildren().addAll(labelfirst, one, two, three, four, button, labelresponse);
+        
+Scene scene1= new Scene(layout, 400, 250);
+primaryStage.setScene(scene1);
+        
+primaryStage.show();
+}
+
+  
+public static void main(String[] args) {
+launch(args);
+}
+    
+}
+

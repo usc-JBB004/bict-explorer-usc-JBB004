@@ -1,0 +1,26 @@
+Career                              Minor                         Course
+____________________________________________________________________________________________________________
+Analyst Programmer            Software Development            Creative Problem Solving with Programming            
+
+Analyst Programmer            Software Development            Software Development 1            
+
+Analyst Programmer            Software Development            Systems Analysis and Design            
+
+Analyst Programmer            Software Development            Mobile App Development            
+
+Analyst Programmer            Game Programming            Introduction to Games Scripting            
+
+Analyst Programmer            Game Programming            Professional Games Programming            
+
+Analyst Programmer            Game Programming            Advanced Games Programming            
+
+Analyst Programmer            Game Programming            Advanced Games Programming 2.0            
+
+Network Administrator            Telecoms and Networks            Introduction to Telecommunication and Networks            
+
+Network Administrator            Telecoms and Networks            Telecommunications and Networks            
+
+Network Administrator            Data Management            Introduction to Data Science            
+
+Database Administrator            Data Management            Introduction to Data Science            
+

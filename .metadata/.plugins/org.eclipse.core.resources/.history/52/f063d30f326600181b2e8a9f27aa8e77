@@ -1,0 +1,13 @@
+package au.edu.usc.bict_explorer.rules;
+
+import java.util.ArrayList;
+
+class Hierarchy {
+
+	private ArrayList<Hierarchy>  childs=new ArrayList<>();
+	 
+	public ArrayList<Hierarchy> getChild()
+	{
+		return childs;
+	}
+}

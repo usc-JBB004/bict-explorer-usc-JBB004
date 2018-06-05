@@ -1,0 +1,75 @@
+package au.edu.usc.bict_explorer.rules;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class Output {
+
+	public static void main(String[] args) {
+	
+	File careersFile= new File("src/au/edu/usc/bict_explorer/resources/careers.options");
+	File minorsFile= new File("src/au/edu/usc/bict_explorer/resources/minors.options");
+	File coursesFile= new File("src/au/edu/usc/bict_explorer/resources/courses.options");
+	
+	Degree degree;
+	Map<String, Option> result;
+	Map<String, Option> result1;
+	Map<String, Option> result2;
+	Map<String, Option> result3;
+	try
+	{
+	degree = new Degree(careersFile,minorsFile,coursesFile);
+	result1= degree.courses();
+	result2= degree.minors();
+	result3= degree.careers();
+	Set<Entry<String, Option>> set1=result1.entrySet();
+	Set<Entry<String, Option>> set2=result2.entrySet();
+	Set<Entry<String, Option>> set3=result3.entrySet();
+	File file=new File("src/au/edu/usc/bict_explorer/resources/bict.txt");
+	if(file.exists())
+	   file.delete();
+	else
+	   file.createNewFile();
+	
+	FileWriter fstream = new FileWriter("src/au/edu/usc/bict_explorer/resources/bict.txt",true);
+	  BufferedWriter out = new BufferedWriter(fstream);
+	  
+	for(Entry<String, Option> entry:set2)
+	{
+		String outputintofile=entry.getValue().getCode()+" 	"+entry.getValue().getName()+"	 "+entry.getValue().getDescription()+"	 "
+                +entry.getValue().getDownstream()+"	 "+entry.getValue().getUpstream()+"\n"+
+                "____________________________________________________________________________________________________________________________"+"\n";
+		out.write(outputintofile);
+		for(Option o:entry.getValue().getDownstream())
+		{
+			for(Entry<String, Option> entry1:set1)
+			{
+					String s=o.toString();
+				if(s.equals((entry1.getValue().getCode())))
+				{
+					String outputintofile1=entry1.getValue().getCode()+" 	"+entry1.getValue().getName()+"	 "+entry1.getValue().getDescription()+"	 "
+			                   +entry1.getValue().getDownstream()+" 	"+entry1.getValue().getUpstream()+"\n";
+					out.write(outputintofile1);
+				}
+			}
+			
+		}
+		String outputintofile2= "============================================================================================================================="+"\n";
+		out.write(outputintofile2);
+	}
+	degree.processChanges();
+	out.close();
+	
+	}
+	catch(IOException|ParseException e)
+	{
+		e.printStackTrace();
+	}
+ }
+}

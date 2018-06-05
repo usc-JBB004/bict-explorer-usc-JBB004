@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;au.edu.usc.bict_explorer.rules.ssdvfsdvs.java&apos; to &apos;Dinnermenu.java&apos;&#x0D;&#x0A;- Original project: &apos;BICT Explorer&apos;&#x0D;&#x0A;- Original element: &apos;au.edu.usc.bict_explorer.rules.ssdvfsdvs.java&apos;&#x0D;&#x0A;- Renamed element: &apos;au.edu.usc.bict_explorer.rules.Dinnermenu.java&apos;" description="Rename compilation unit &apos;ssdvfsdvs.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;au.edu.usc.bict_explorer.rules{ssdvfsdvs.java" name="Dinnermenu.java" references="false" stamp="1527835885789" version="1.0"/>
+</session>
